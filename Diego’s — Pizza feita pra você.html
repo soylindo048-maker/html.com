@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Diego’s — Pizza feita pra você</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:ital,wght@0,400;0,500;0,700;1,500&display=swap" rel="stylesheet">
+<style>
+:root{--color-cream:#F5F0D8;--color-cream-soft:#FFF8E8;--color-red:#B92E24;--color-red-dark:#651914;--color-burgundy:#3A0908;--color-orange:#F28C16;--color-orange-dark:#D7650F;--color-yellow:#FFC21A;--color-green:#3C7A21;--color-black:#11100E;--color-white:#FFFFFF;--font-display:"Anton",Impact,sans-serif;--font-body:"Inter",system-ui,sans-serif;--radius-sm:6px;--radius-md:10px;--radius-lg:16px;--radius-pill:999px;--shadow-sm:0 4px 12px rgba(0,0,0,.3);--shadow-md:0 10px 30px rgba(0,0,0,.4);--shadow-lg:0 20px 50px rgba(0,0,0,.55);--container-width:1240px;--transition-fast:150ms ease;--transition-normal:220ms ease-out;--line:rgba(255,194,26,.22)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:90px;color-scheme:dark}
+body{font-family:var(--font-body);background:var(--color-black);color:var(--color-cream);line-height:1.5;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+.wrap{max-width:var(--container-width);margin:0 auto;padding:0 20px}
+h1,h2,h3{font-family:var(--font-display);font-weight:400;text-transform:uppercase;line-height:1.05}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 24px;border:0;border-radius:var(--radius-sm);background:var(--color-red);color:var(--color-white);font:700 14px var(--font-body);text-transform:uppercase;cursor:pointer;text-decoration:none;transition:transform var(--transition-fast),background var(--transition-fast)}
+.btn:hover{transform:translateY(-1px);background:var(--color-orange-dark)}
+.btn.y{background:var(--color-orange);color:var(--color-black)}
+.btn.y:hover{background:var(--color-yellow)}
+.btn.o{background:transparent;box-shadow:inset 0 0 0 1px var(--color-yellow);color:var(--color-white)}
+.btn.o:hover{background:var(--color-burgundy)}
+.btn.lg{min-height:52px;padding:0 32px;font-size:15px}
+:focus-visible{outline:3px solid var(--color-yellow);outline-offset:2px}
+/* topbar + header */
+.top{background:var(--color-black);text-align:center;font:700 13px var(--font-body);padding:10px 16px;border-bottom:1px solid var(--line);letter-spacing:.04em}
+.top b{color:var(--color-yellow)}
+header{position:sticky;top:0;z-index:20;background:rgba(17,16,14,.96);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top,0px)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;min-height:76px;gap:16px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--color-white)}
+.logo i{font-style:normal;font-size:34px}
+.logo span{font:400 38px/1 var(--font-display);text-transform:uppercase}
+.logo small{display:block;font:700 10px var(--font-body);color:var(--color-yellow);letter-spacing:.14em}
+nav{display:flex;gap:26px}
+nav a{color:var(--color-white);text-decoration:none;font:700 13px var(--font-body);text-transform:uppercase;padding:6px 0;border-bottom:2px solid transparent;transition:border-color var(--transition-fast),color var(--transition-fast)}
+nav a:hover{color:var(--color-yellow);border-color:var(--color-yellow)}
+@media(max-width:900px){nav{display:none}}
+/* hero */
+.hero{background:radial-gradient(ellipse at 70% 55%,var(--color-red-dark) 0,var(--color-burgundy) 40%,var(--color-black) 75%);overflow:hidden;position:relative}
+.hero .wrap{display:grid;gap:20px;align-items:center;padding-top:44px;padding-bottom:44px}
+@media(min-width:900px){.hero .wrap{grid-template-columns:1fr 1.1fr;min-height:560px}}
+.script{font:italic 500 26px var(--font-body);color:var(--color-orange);margin-bottom:6px}
+.hero h1{font-size:clamp(64px,11vw,128px);color:var(--color-white)}
+.hero h1 em{display:block;font-style:normal;color:var(--color-red)}
+.hero p.lead{font-size:18px;max-width:400px;margin:18px 0 26px}
+.acts{display:flex;gap:12px;flex-wrap:wrap}
+.fast{display:flex;align-items:center;gap:12px;margin-top:28px;font-size:13px}
+.fast i{font-style:normal;font-size:34px}
+.fast b{color:var(--color-yellow);display:block;text-transform:uppercase}
+.stage{position:relative;aspect-ratio:1;width:100%;max-width:600px;margin:0 auto}
+.board{position:absolute;inset:6%;border-radius:50%;background:radial-gradient(circle at 35% 30%,var(--color-orange-dark),var(--color-burgundy) 78%);box-shadow:var(--shadow-lg),inset 0 0 0 10px var(--color-red-dark);display:grid;place-items:center;font-size:clamp(150px,32vw,290px);overflow:hidden;transform:rotate(-6deg)}
+.board img{width:100%;height:100%;object-fit:cover}
+.badge{position:absolute;right:0;bottom:12%;width:116px;height:116px;border-radius:50%;background:var(--color-black);box-shadow:inset 0 0 0 2px var(--color-yellow);display:grid;place-items:center;text-align:center;font-size:11px;font-weight:700;text-transform:uppercase;line-height:1.1}
+.badge b{display:block;font:400 30px var(--font-display);color:var(--color-yellow)}
+/* trust bar */
+.trust{margin:-1px auto 0;display:grid;grid-template-columns:repeat(2,1fr);gap:0;background:var(--color-burgundy);border:1px solid var(--line);border-radius:var(--radius-md);max-width:var(--container-width)}
+@media(min-width:900px){.trust{grid-template-columns:repeat(5,1fr)}}
+.trust div{display:flex;align-items:center;gap:12px;padding:16px;font-size:12px;border-right:1px solid var(--line)}
+.trust div:last-child{border:0}
+.trust i{font-style:normal;font-size:30px}
+.trust b{display:block;font-size:13px;color:var(--color-white);text-transform:uppercase}
+.trustwrap{padding:0 20px;max-width:calc(var(--container-width) + 40px);margin:24px auto 0}
+/* section head */
+.sec{padding:48px 0 0}
+.head{display:flex;align-items:end;justify-content:space-between;gap:12px;margin-bottom:20px}
+.head h2{font-size:clamp(30px,5vw,42px);color:var(--color-white)}
+.head h2 b{font-weight:400;color:var(--color-orange)}
+.head a{color:var(--color-white);font:700 13px var(--font-body);text-transform:uppercase;text-decoration:none;min-height:44px;display:inline-flex;align-items:center}
+.head a:hover{color:var(--color-yellow)}
+/* cards */
+.pizzas{display:grid;gap:14px;grid-template-columns:repeat(2,1fr)}
+@media(min-width:700px){.pizzas{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:1100px){.pizzas{grid-template-columns:repeat(6,1fr)}}
+.card{position:relative;background:var(--color-burgundy);border:1px solid var(--line);border-radius:var(--radius-md);padding:10px 10px 14px;text-align:center;display:flex;flex-direction:column;transition:transform var(--transition-normal),box-shadow var(--transition-normal)}
+.card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.photo{aspect-ratio:1;border-radius:var(--radius-sm);background:radial-gradient(circle,var(--color-red-dark),var(--color-black));display:grid;place-items:center;font-size:76px;overflow:hidden}
+.photo img{width:100%;height:100%;object-fit:cover}
+.tag{position:absolute;top:16px;left:16px;background:var(--color-red);color:var(--color-white);font:700 10px var(--font-body);padding:3px 8px;border-radius:var(--radius-sm);text-transform:uppercase}
+.tag.g{background:var(--color-green)}
+.card h3{font:700 14px var(--font-body);color:var(--color-white);margin:12px 0 4px}
+.card p{font-size:12px;opacity:.8;flex:1;margin-bottom:8px}
+.price{font:400 26px var(--font-display);color:var(--color-white);margin-bottom:10px}
+.card .btn{width:100%;min-height:44px;font-size:12px}
+/* deals */
+.deals{display:grid;gap:18px;background:linear-gradient(110deg,var(--color-burgundy),var(--color-black));border:1px solid var(--line);border-radius:var(--radius-md);padding:24px}
+@media(min-width:1000px){.deals{grid-template-columns:.8fr 2.2fr;align-items:center}}
+.deals h2{font-size:38px;color:var(--color-white);margin-bottom:6px}
+.deals>div:first-child p{margin-bottom:16px;font-size:14px}
+.dlist{display:grid;gap:14px}
+@media(min-width:700px){.dlist{grid-template-columns:repeat(3,1fr)}}
+.deal{display:flex;align-items:center;gap:12px;padding:12px;border-radius:var(--radius-md);transition:transform var(--transition-normal);text-decoration:none;color:inherit}
+.deal:hover{transform:translateY(-4px)}
+.deal .photo{width:96px;flex:none;font-size:44px;border-radius:50%}
+.deal b{font-size:12px;text-transform:uppercase;color:var(--color-white);display:block}
+.deal small{font-size:12px;display:block}
+.deal .price{margin:0;color:var(--color-yellow);font-size:32px}
+/* categories */
+.cats{display:flex;gap:18px;overflow-x:auto;padding:4px 2px 14px;scroll-snap-type:x mandatory}
+.cat{flex:none;width:112px;background:none;border:0;color:var(--color-white);font:700 12px var(--font-body);text-transform:uppercase;cursor:pointer;text-align:center;scroll-snap-align:start;min-height:44px}
+.cat .photo{width:104px;height:104px;margin:0 auto 8px;border-radius:50%;font-size:50px;box-shadow:inset 0 0 0 2px var(--line);transition:box-shadow var(--transition-fast),transform var(--transition-fast)}
+.cat:hover .photo{transform:translateY(-2px)}
+.cat.on .photo{box-shadow:inset 0 0 0 4px var(--color-yellow)}
+.cat.on{color:var(--color-yellow)}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(2,1fr);margin-top:8px}
+@media(min-width:760px){.grid{grid-template-columns:repeat(4,1fr)}}
+/* about */
+.about{display:grid;border:1px solid var(--line);border-radius:var(--radius-md);overflow:hidden;background:var(--color-burgundy)}
+@media(min-width:900px){.about{grid-template-columns:1fr 1fr}}
+.ambient{min-height:260px;background:radial-gradient(circle at 30% 40%,var(--color-orange) 0,var(--color-red-dark) 30%,var(--color-black) 75%);display:grid;place-items:center;font:400 clamp(60px,12vw,110px) var(--font-display);color:var(--color-red);text-shadow:0 0 24px var(--color-red);letter-spacing:.04em}
+.story{padding:28px}
+.story h2{font-size:clamp(28px,4vw,38px);color:var(--color-white);margin:6px 0 12px}
+.story small{color:var(--color-orange);font-weight:700;text-transform:uppercase;letter-spacing:.1em}
+.why{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:22px;font-size:12px}
+.why b{display:block;color:var(--color-white);font-size:13px}
+/* news + footer */
+.news{margin-top:48px;background:var(--color-burgundy);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.news .wrap{display:grid;gap:14px;padding-top:24px;padding-bottom:24px;align-items:center}
+@media(min-width:800px){.news .wrap{grid-template-columns:1fr 1.4fr}}
+.news h2{font-size:30px;color:var(--color-yellow)}
+.news form{display:flex;gap:0;flex-wrap:wrap}
+.news input{flex:1;min-width:200px;min-height:48px;padding:0 14px;border:0;border-radius:var(--radius-sm) 0 0 var(--radius-sm);font:500 15px var(--font-body);background:var(--color-cream-soft);color:var(--color-black)}
+.news .btn{border-radius:0 var(--radius-sm) var(--radius-sm) 0;min-height:48px}
+.ok{color:var(--color-yellow);font-weight:700;min-height:22px;margin-top:6px}
+footer{padding:40px 0 20px;font-size:13px}
+footer .wrap{display:grid;gap:26px;grid-template-columns:repeat(2,1fr)}
+@media(min-width:900px){footer .wrap{grid-template-columns:1.3fr 1fr 1fr 1.3fr}}
+footer h4{font:700 12px var(--font-body);text-transform:uppercase;color:var(--color-yellow);margin-bottom:10px}
+footer a{display:block;color:var(--color-cream);text-decoration:none;padding:3px 0;opacity:.85}
+footer a:hover{color:var(--color-yellow)}
+.copy{grid-column:1/-1;border-top:1px solid var(--line);padding-top:16px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;opacity:.85}
+.copy button{background:none;border:0;color:var(--color-cream);cursor:pointer;font:500 13px var(--font-body);min-height:44px;text-decoration:underline}
+.wpp{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:30;display:flex;align-items:center;gap:8px;min-height:56px;padding:0 20px;border-radius:var(--radius-pill);background:var(--color-green);color:var(--color-white);font:700 14px var(--font-body);text-decoration:none;box-shadow:var(--shadow-lg);transition:transform var(--transition-fast),background var(--transition-fast)}
+.wpp:hover{transform:translateY(-1px);background:var(--color-orange-dark)}
+.wpp i{font-style:normal;font-size:24px}
+@media(max-width:520px){.wpp span{display:none}.wpp{padding:0 16px}}
+/* admin */
+.bar{display:none;position:sticky;top:0;z-index:40;background:var(--color-green);color:var(--color-white);padding:8px 20px;align-items:center;justify-content:space-between;gap:10px;font-weight:700;font-size:14px;flex-wrap:wrap}
+body.adm .bar{display:flex}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.75);display:none;place-items:center;z-index:50;padding:16px}
+.modal.open{display:grid}
+.box{background:var(--color-cream-soft);color:var(--color-black);border-radius:var(--radius-lg);padding:26px;width:100%;max-width:440px;max-height:90vh;overflow:auto}
+.box.wide{max-width:640px}
+.box h3{font-size:30px;color:var(--color-burgundy);margin-bottom:12px}
+.box input[type=password],.box input[type=number]{width:100%;min-height:44px;padding:0 14px;border:2px solid var(--color-red-dark);border-radius:var(--radius-md);font:500 16px var(--font-body);background:var(--color-white);color:var(--color-black)}
+.err{color:var(--color-red);font-size:14px;min-height:20px;margin:8px 0}
+.row{display:grid;grid-template-columns:56px 1fr;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--color-cream)}
+.row .photo{width:56px;font-size:26px;border-radius:50%}
+.row b{font-size:14px;color:var(--color-burgundy)}
+.ctl{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:6px}
+.ctl input[type=number]{width:110px}
+.ctl .btn{min-height:44px;padding:0 14px;font-size:12px}
+.acts2{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div class="bar"><span>Modo dono ativo — mude fotos e preços</span><span class="acts2" style="margin:0"><button class="btn y" id="openEd">Editar cardápio</button><button class="btn o" id="out">Sair</button></span></div>
+<div class="top">PEÇA PELO SITE E RECEBA QUENTINHA — <b>ENTREGA EM ATÉ 30 MIN</b></div>
+<header><div class="wrap">
+<a class="logo" href="#topo"><i>🍕</i><span>Diego’s<small>PIZZA &amp; BURGER</small></span></a>
+<nav><a href="#topo">Início</a><a href="#populares">Pizzas</a><a href="#ofertas">Ofertas</a><a href="#cardapio">Cardápio</a><a href="#sobre">Sobre</a><a href="#contato">Contato</a></nav>
+<a class="btn" href="#cardapio">Pedir agora</a>
+</div></header>
+
+<main id="topo">
+<div class="hero"><div class="wrap">
+<div>
+<p class="script">Quente. Fresca. Deliciosa.</p>
+<h1>Pizza <em>feita pra você!</em></h1>
+<p class="lead">O sabor perfeito de massa leve, queijo derretendo e ingredientes frescos, assada na hora.</p>
+<div class="acts"><a class="btn lg" href="#cardapio">Pedir agora</a><a class="btn lg o" href="#populares">Ver pizzas</a></div>
+<div class="fast"><i>🛵</i><span><b>Entrega rápida</b>30 minutos ou sua pizza é cortesia*</span></div>
+</div>
+<div class="stage"><div class="board" id="heroImg"></div><div class="badge"><span>A partir de<b id="heroPrice"></b></span></div></div>
+</div></div>
+
+<div class="trustwrap"><div class="trust">
+<div><i>🍅</i><span><b>Ingredientes frescos</b>100% naturais</span></div>
+<div><i>🔥</i><span><b>Forno a lenha</b>Assada no ponto</span></div>
+<div><i>🛵</i><span><b>Entrega rápida</b>Em até 30 min</span></div>
+<div><i>🏆</i><span><b>Qualidade Diego’s</b>Sempre igual</span></div>
+<div><i>🔒</i><span><b>Pagamento seguro</b>Pix e cartão</span></div>
+</div></div>
+
+<section class="sec" id="populares"><div class="wrap">
+<div class="head"><h2>Pizzas <b>populares</b></h2><a href="#cardapio">Ver cardápio →</a></div>
+<div class="pizzas" id="pop"></div>
+</div></section>
+
+<section class="sec" id="ofertas"><div class="wrap">
+<div class="deals">
+<div><h2>Combos Diego’s</h2><p>Combos exclusivos para matar a fome gastando menos.</p><a class="btn" href="#cardapio">Ver combos</a></div>
+<div class="dlist" id="deals"></div>
+</div></div></section>
+
+<section class="sec" id="cardapio"><div class="wrap">
+<div class="head"><h2>Explore nosso <b>cardápio</b></h2></div>
+<div class="cats" id="cats" role="tablist"></div>
+<div class="grid" id="grid"></div>
+</div></section>
+
+<section class="sec" id="sobre"><div class="wrap">
+<div class="about">
+<div class="ambient" aria-hidden="true">DIEGO’S</div>
+<div class="story">
+<small>Nossa história</small>
+<h2>Feito com paixão, servido com carinho.</h2>
+<p>No Diego’s, acreditamos que felicidade tem formato de fatia. Da cozinha à sua porta, cuidamos de cada detalhe: massa de fermentação lenta, queijo de verdade e entrega que chega quente.</p>
+<p style="margin-top:12px;font:italic 500 22px var(--font-body);color:var(--color-orange)">— Diego e equipe</p>
+<div class="why"><div><b>Higiene e segurança</b>Cozinha seguindo as melhores práticas.</div><div><b>Fresca e quente</b>Feita na hora, saindo do forno.</div><div><b>Preço justo</b>Sabor premium sem exagero.</div><div><b>Amada por milhares</b>Clientes que sempre voltam.</div></div>
+</div></div>
+</div></section>
+</main>
+
+<div class="news"><div class="wrap">
+<div><h2>Fique por dentro!</h2><p>Assine e receba ofertas exclusivas no seu e-mail.</p></div>
+<div><form id="nl"><input type="email" required placeholder="Seu melhor e-mail" aria-label="E-mail"><button class="btn y" type="submit">Assinar</button></form><p class="ok" id="nlok" role="status"></p></div>
+</div></div>
+
+<footer id="contato"><div class="wrap">
+<div><a class="logo" href="#topo"><i>🍕</i><span>Diego’s</span></a><p style="margin-top:10px">Artesanal. Quente. Irresistível.</p></div>
+<div><h4>Links</h4><a href="#populares">Pizzas</a><a href="#ofertas">Combos</a><a href="#cardapio">Cardápio</a><a href="#sobre">Sobre nós</a></div>
+<div><h4>Redes</h4><a href="#">Instagram</a><a href="#">WhatsApp</a><a href="#">Facebook</a></div>
+<div><h4>Contato</h4><p>Rua das Flames, 420 — São Paulo, SP</p><p style="margin-top:8px">Seg–Sex 11h–23h<br>Sáb–Dom 11h–00h</p><p style="margin-top:8px">Aceitamos Pix, crédito e débito.</p></div>
+<div class="copy"><span>© 2026 Diego’s. Todos os direitos reservados.</span><button id="adminLink">Área do dono</button></div>
+</div></footer>
+
+<a class="wpp" href="https://wa.me/5513982240400?text=Ol%C3%A1%2C%20Diego%E2%80%99s!%20Quero%20fazer%20um%20pedido." target="_blank" rel="noopener" aria-label="Pedir pelo WhatsApp"><i>💬</i><span>Pedir no WhatsApp</span></a>
+<div class="modal" id="login"><div class="box">
+<h3>Área do dono</h3>
+<p style="margin-bottom:12px;font-size:14px">Digite a senha para editar fotos e preços.</p>
+<input type="password" id="pw" placeholder="Senha" autocomplete="off" aria-label="Senha">
+<p class="err" id="err" role="alert"></p>
+<div class="acts2" style="margin-top:0"><button class="btn" id="enter">Entrar</button><button class="btn" style="background:var(--color-black)" data-close>Cancelar</button></div>
+</div></div>
+<div class="modal" id="editor"><div class="box wide">
+<h3>Editar cardápio</h3>
+<div id="rows"></div>
+<div class="acts2"><button class="btn" id="reset" style="background:var(--color-black)">Restaurar padrão</button><button class="btn y" data-close>Concluir</button></div>
+</div></div>
+
+<script>
+var DEFAULTS=[
+{id:1,cat:"Pizzas",emoji:"🍕",tag:"Mais vendida",name:"Pepperoni Artesanal",desc:"Pepperoni importado, queijo cremoso, borda recheada",price:48.9},
+{id:2,cat:"Pizzas",emoji:"🍕",tag:"Vegetariana",g:1,name:"Margherita da Casa",desc:"Molho san marzano, fior di latte, manjericão fresco",price:42.9},
+{id:3,cat:"Pizzas",emoji:"🍕",tag:"Apimentada",name:"Calabresa Brasa",desc:"Calabresa defumada, cebola roxa e pimenta biquinho",price:44.9},
+{id:4,cat:"Pizzas",emoji:"🍕",tag:"Novidade",name:"Frango Catupiry",desc:"Frango desfiado, catupiry original e milho",price:46.9},
+{id:5,cat:"Pizzas",emoji:"🍕",name:"Quatro Queijos",desc:"Mussarela, provolone, parmesão e gorgonzola",price:49.9},
+{id:6,cat:"Pizzas",emoji:"🍕",name:"Trufada Premium",desc:"Cogumelos, queijo brie e molho trufado",price:54.9},
+{id:7,cat:"Burgers",emoji:"🍔",name:"Classic Smash",desc:"Duplo smash, cheddar artesanal, picles, molho especial",price:34.9},
+{id:8,cat:"Burgers",emoji:"🥓",name:"Brasa BBQ",desc:"Blend premium, bacon defumado, cebola caramelizada",price:39.9},
+{id:9,cat:"Burgers",emoji:"🧀",name:"Burger Angus Brie",desc:"Blend angus, queijo brie, cogumelo, molho trufado",price:47.9},
+{id:10,cat:"Combos",emoji:"🥤",name:"Pizza + Refri",desc:"Pizza grande e refrigerante 2L",price:59.9},
+{id:11,cat:"Combos",emoji:"🍞",name:"Pizza + Pão de alho",desc:"Pizza grande e pão de alho recheado",price:64.9},
+{id:12,cat:"Combos",emoji:"🍟",name:"Combo Família",desc:"2 burgers + 1 pizza + 4 bebidas",price:129.9},
+{id:13,cat:"Bebidas",emoji:"🥤",name:"Refrigerante 2L",desc:"Gelado, para acompanhar o pedido",price:12.9},
+{id:14,cat:"Bebidas",emoji:"🍹",name:"Suco natural",desc:"Laranja ou limão, 500 ml",price:9.9},
+{id:15,cat:"Sobremesas",emoji:"🍫",name:"Brownie com sorvete",desc:"Brownie quente, sorvete de creme e calda",price:21.9},
+{id:16,cat:"Acompanhamentos",emoji:"🍞",name:"Pão de alho",desc:"Recheado com muçarela e ervas",price:18.9}
+];
+var CATS=[["Pizzas","🍕"],["Burgers","🍔"],["Combos","🍟"],["Bebidas","🥤"],["Sobremesas","🍫"],["Acompanhamentos","🍞"]];
+var KEY="diegos_menu_v2",PASS="2008",P=[],cat="Pizzas";
+function clone(o){return JSON.parse(JSON.stringify(o))}
+function load(){P=clone(DEFAULTS);try{var s=localStorage.getItem(KEY);if(s){var o=JSON.parse(s);P.forEach(function(p){var x=o[p.id];if(x){if(typeof x.price==="number")p.price=x.price;if(x.img)p.img=x.img}})}}catch(e){}}
+function save(){try{var o={};P.forEach(function(p){o[p.id]={price:p.price,img:p.img||null}});localStorage.setItem(KEY,JSON.stringify(o))}catch(e){alert("Não foi possível salvar neste navegador.")}}
+function brl(n){return n.toLocaleString("pt-BR",{style:"currency",currency:"BRL"})}
+function ph(p){return p.img?'<img src="'+p.img+'" alt="'+p.name+'">':p.emoji}
+function card(p){return '<article class="card">'+(p.tag?'<span class="tag'+(p.g?' g':'')+'">'+p.tag+'</span>':'')+'<div class="photo">'+ph(p)+'</div><h3>'+p.name+'</h3><p>'+p.desc+'</p><span class="price">'+brl(p.price)+'</span><a class="btn y" href="#" data-order="'+p.name+'">Pedir agora</a></article>'}
+function render(){
+ var h=P[0],hh=document.getElementById("heroImg");hh.innerHTML=ph(h);
+ document.getElementById("heroPrice").textContent=brl(Math.min.apply(null,P.filter(function(p){return p.cat==="Pizzas"}).map(function(p){return p.price})));
+ document.getElementById("pop").innerHTML=P.filter(function(p){return p.cat==="Pizzas"}).map(card).join("");
+ document.getElementById("deals").innerHTML=P.filter(function(p){return p.cat==="Combos"}).map(function(p){return '<a class="deal" href="#" data-order="'+p.name+'"><div class="photo">'+ph(p)+'</div><span><b>'+p.name+'</b><small>A partir de</small><span class="price">'+brl(p.price)+'</span></span></a>'}).join("");
+ document.getElementById("cats").innerHTML=CATS.map(function(c){var rep=P.filter(function(p){return p.cat===c[0]})[0];return '<button class="cat'+(c[0]===cat?' on':'')+'" role="tab" aria-selected="'+(c[0]===cat)+'" data-cat="'+c[0]+'"><div class="photo">'+(rep&&rep.img?'<img src="'+rep.img+'" alt="">':c[1])+'</div>'+c[0]+'</button>'}).join("");
+ document.getElementById("grid").innerHTML=P.filter(function(p){return p.cat===cat}).map(card).join("");
+}
+function rows(){document.getElementById("rows").innerHTML=P.map(function(p){return '<div class="row"><div class="photo">'+ph(p)+'</div><div><b>'+p.name+' <small>('+p.cat+')</small></b><div class="ctl"><input type="number" min="0" step="0.10" value="'+p.price.toFixed(2)+'" data-price="'+p.id+'" aria-label="Preço de '+p.name+'"><label class="btn y">Trocar foto<input type="file" accept="image/*" data-file="'+p.id+'" hidden></label>'+(p.img?'<button class="btn" data-rm="'+p.id+'">Remover foto</button>':'')+'</div></div></div>'}).join("")}
+function find(id){return P.filter(function(p){return p.id==id})[0]}
+function openM(id){document.getElementById(id).classList.add("open")}
+function closeAll(){document.querySelectorAll(".modal").forEach(function(m){m.classList.remove("open")})}
+document.addEventListener("click",function(e){
+ var t=e.target.closest("[data-cat],[data-order],[data-close],[data-rm]");if(!t)return;
+ if(t.dataset.cat){cat=t.dataset.cat;render()}
+ else if(t.dataset.order){e.preventDefault();window.open("https://wa.me/5513982240400?text="+encodeURIComponent("Olá, Diego’s! Quero pedir: "+t.dataset.order),"_blank")}
+ else if(t.dataset.close){closeAll()}
+ else if(t.dataset.rm){delete find(t.dataset.rm).img;save();render();rows()}
+});
+document.addEventListener("change",function(e){
+ var t=e.target;
+ if(t.dataset.price){var v=parseFloat(String(t.value).replace(",","."));if(v>=0){find(t.dataset.price).price=v;save();render()}}
+ if(t.dataset.file&&t.files[0]){var id=t.dataset.file,r=new FileReader();
+  r.onload=function(){var im=new Image();im.onload=function(){var c=document.createElement("canvas"),k=Math.min(1,480/Math.max(im.width,im.height));c.width=im.width*k;c.height=im.height*k;c.getContext("2d").drawImage(im,0,0,c.width,c.height);find(id).img=c.toDataURL("image/jpeg",.82);save();render();rows()};im.src=r.result};r.readAsDataURL(t.files[0])}
+});
+document.getElementById("adminLink").onclick=function(){if(document.body.classList.contains("adm")){rows();openM("editor")}else{document.getElementById("pw").value="";document.getElementById("err").textContent="";openM("login");document.getElementById("pw").focus()}};
+function tryLogin(){if(document.getElementById("pw").value===PASS){document.body.classList.add("adm");closeAll();rows();openM("editor")}else{document.getElementById("err").textContent="Senha incorreta. Tente de novo."}}
+document.getElementById("enter").onclick=tryLogin;
+document.getElementById("pw").onkeydown=function(e){if(e.key==="Enter")tryLogin()};
+document.getElementById("openEd").onclick=function(){rows();openM("editor")};
+document.getElementById("out").onclick=function(){document.body.classList.remove("adm");closeAll()};
+document.getElementById("reset").onclick=function(){if(confirm("Voltar preços e fotos ao padrão?")){try{localStorage.removeItem(KEY)}catch(e){}load();render();rows()}};
+document.querySelectorAll(".modal").forEach(function(m){m.addEventListener("click",function(e){if(e.target===m)closeAll()})});
+document.getElementById("nl").onsubmit=function(e){e.preventDefault();document.getElementById("nlok").textContent="Pronto! Você vai receber as ofertas do Diego’s.";e.target.reset()};
+load();render();
+</script>
+</body>
+</html>
